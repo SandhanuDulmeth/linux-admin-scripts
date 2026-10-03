@@ -9,6 +9,7 @@
 
 # Prevent duplicate sourcing
 if [[ -n "${_LOGGER_SH_LOADED:-}" ]]; then
+    # shellcheck disable=SC2317
     return 0 2>/dev/null || exit 0
 fi
 _LOGGER_SH_LOADED=1

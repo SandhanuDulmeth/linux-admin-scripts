@@ -2,7 +2,7 @@
 # Linux Admin Scripts - Automation Suite Makefile
 # ==============================================================================
 
-SHELL := /usr/bin/env bash
+SHELL := /bin/bash
 PREFIX ?= /usr/local
 CONFDIR ?= /etc/linux-admin-scripts
 LIBDIR ?= $(PREFIX)/lib/linux-admin-scripts

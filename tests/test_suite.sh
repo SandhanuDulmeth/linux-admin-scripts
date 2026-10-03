@@ -25,17 +25,17 @@ C_RESET='\033[0m'
 
 test_start() {
     TEST_COUNT=$(( TEST_COUNT + 1 ))
-    printf "${C_BLUE}[TEST %02d]${C_RESET} %s ... " "${TEST_COUNT}" "$1"
+    printf "%b[TEST %02d]%b %s ... " "${C_BLUE}" "${TEST_COUNT}" "${C_RESET}" "$1"
 }
 
 assert_pass() {
     PASS_COUNT=$(( PASS_COUNT + 1 ))
-    printf "${C_GREEN}PASS${C_RESET}\n"
+    printf "%bPASS%b\n" "${C_GREEN}" "${C_RESET}"
 }
 
 assert_fail() {
     FAIL_COUNT=$(( FAIL_COUNT + 1 ))
-    printf "${C_RED}FAIL${C_RESET} (%s)\n" "$1"
+    printf "%bFAIL%b (%s)\n" "${C_RED}" "${C_RESET}" "$1"
 }
 
 # Temporary directory for test execution
@@ -45,9 +45,9 @@ cleanup() {
 }
 trap cleanup EXIT INT TERM
 
-printf "\n${C_YELLOW}========================================${C_RESET}\n"
-printf "${C_YELLOW} Running Linux Admin Scripts Test Suite ${C_RESET}\n"
-printf "${C_YELLOW}========================================${C_RESET}\n\n"
+printf "\n%b========================================%b\n" "${C_YELLOW}" "${C_RESET}"
+printf "%b Running Linux Admin Scripts Test Suite %b\n" "${C_YELLOW}" "${C_RESET}"
+printf "%b========================================%b\n\n" "${C_YELLOW}" "${C_RESET}"
 
 # ------------------------------------------------------------------------------
 # Test 1: Bash Syntax Validation (bash -n)
@@ -187,9 +187,9 @@ fi
 # ------------------------------------------------------------------------------
 # Summary
 # ------------------------------------------------------------------------------
-printf "\n${C_YELLOW}----------------------------------------${C_RESET}\n"
-printf "Results: %d Total | ${C_GREEN}%d Passed${C_RESET} | ${C_RED}%d Failed${C_RESET}\n" "${TEST_COUNT}" "${PASS_COUNT}" "${FAIL_COUNT}"
-printf "${C_YELLOW}----------------------------------------${C_RESET}\n\n"
+printf "\n%b----------------------------------------%b\n" "${C_YELLOW}" "${C_RESET}"
+printf "Results: %d Total | %b%d Passed%b | %b%d Failed%b\n" "${TEST_COUNT}" "${C_GREEN}" "${PASS_COUNT}" "${C_RESET}" "${C_RED}" "${FAIL_COUNT}" "${C_RESET}"
+printf "%b----------------------------------------%b\n\n" "${C_YELLOW}" "${C_RESET}"
 
 if (( FAIL_COUNT > 0 )); then
     exit 1

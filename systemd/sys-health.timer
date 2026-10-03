@@ -1,0 +1,18 @@
+[Unit]
+Description=Periodic System Health Telemetry Timer (Every 5 minutes)
+Documentation=https://github.com/sandhanu/linux-admin-scripts
+Requires=sys-health.service
+
+[Timer]
+# Run every 5 minutes
+OnCalendar=*:0/5
+# Run 1 minute after boot
+OnBootSec=1min
+# Add randomized delay to prevent thundering herds across fleet
+RandomizedDelaySec=15s
+# Catch up on missed runs if server was powered off
+Persistent=true
+Unit=sys-health.service
+
+[Install]
+WantedBy=timers.target

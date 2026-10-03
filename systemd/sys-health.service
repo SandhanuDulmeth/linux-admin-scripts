@@ -1,0 +1,20 @@
+[Unit]
+Description=Linux Admin Scripts - Host System Health Monitor
+Documentation=https://github.com/sandhanu/linux-admin-scripts
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/sys-health.sh -l /var/log/linux-admin-scripts/sys-health.log
+StandardOutput=journal
+StandardError=journal
+
+# Security Sandbox Hardening
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/var/log/linux-admin-scripts
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

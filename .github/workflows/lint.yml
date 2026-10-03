@@ -1,0 +1,29 @@
+name: CI & Static Analysis
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  shellcheck:
+    name: ShellCheck & Test Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install ShellCheck & Dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y shellcheck
+
+      - name: Static Code Analysis (ShellCheck)
+        run: |
+          shellcheck -x bin/*.sh lib/*.sh tests/*.sh
+
+      - name: Run Automated Test Suite
+        run: |
+          chmod +x bin/*.sh lib/*.sh tests/*.sh
+          make test

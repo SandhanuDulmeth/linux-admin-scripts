@@ -1,0 +1,15 @@
+# Backups and archives
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.sha256
+
+# Temporary files and logs
+*.log
+/tmp/
+test-suite-*
+backup-engine-*
+
+# OS files
+.DS_Store
+Thumbs.db

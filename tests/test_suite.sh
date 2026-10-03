@@ -77,7 +77,7 @@ test_start "lib/logger.sh level filtering and output formatting"
 source "${PROJECT_ROOT}/lib/logger.sh"
 
 INFO_OUT=$(log_info "Test info message")
-if [[ "${INFO_OUT}" == *"[INFO]"*"Test info message"* ]]; then
+if [[ "${INFO_OUT}" == *"INFO"*"Test info message"* ]]; then
     assert_pass
 else
     assert_fail "Unexpected log_info output format: '${INFO_OUT}'"

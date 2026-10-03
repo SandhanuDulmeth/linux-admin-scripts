@@ -277,18 +277,18 @@ sudo make uninstall
 
 ---
 
-## 💼 Why This Stands Out in DevOps & SRE Interviews
+## 🛡️ Key Architectural Decisions & Engineering Highlights
 
-| Engineering Feature | Production Competency Demonstrated |
+| Architectural Feature | Production Implementation & Reliability Impact |
 | :--- | :--- |
-| **`lib/` Modularity** | DRY (Don't Repeat Yourself) system architecture and reusable library design. |
-| **`set -euo pipefail` & Traps** | Deep understanding of UNIX process lifecycles, signal handling (`SIGTERM`/`SIGINT`), and failure containment. |
-| **Pre-Flight Disk Verifications** | Defensive systems engineering: preventing disk outages before starting operations. |
-| **SHA-256 Checksumming** | Cryptographic data integrity verification in backup pipelines. |
-| **Structured JSON Telemetry** | Cloud-native observability mindset (ready for Datadog, Prometheus, Vector). |
-| **Copytruncate Log Rotation** | In-depth knowledge of Linux file descriptors, active inode operations, and daemon stability. |
-| **Systemd Timers & Sandboxing** | Modern Linux service management with cgroup security sandboxing (`ProtectSystem=strict`). |
-| **CI/CD Static Analysis** | Shift-left testing, ShellCheck enforcement, and automated quality gates. |
+| **`lib/` Modularity** | DRY (Don't Repeat Yourself) modular architecture separating logging and notifications into reusable libraries. |
+| **`set -euo pipefail` & Signal Traps** | Strict failure containment and automatic resource cleanup on `EXIT`, `INT`, and `TERM` signals. |
+| **Pre-Flight Disk Verifications** | Defensive validation ensuring destination filesystems have adequate headroom before initiating heavy operations. |
+| **SHA-256 Checksumming** | End-to-end cryptographic integrity verification across backup creation and archival pipelines. |
+| **Structured JSON Telemetry** | Cloud-native observability emission ready for ingestion by Prometheus textfile collectors, Vector, or Datadog. |
+| **Copytruncate Log Rotation** | Zero-downtime log rotation preserving active daemon file descriptors without service interruption. |
+| **Systemd Timers & Sandboxing** | Modern Linux daemon scheduling with execution jitter (`RandomizedDelaySec`) and cgroup sandboxing (`ProtectSystem=strict`). |
+| **Automated Test Harness & CI/CD** | Regression testing across all utilities and POSIX/ShellCheck static analysis automated via GitHub Actions. |
 
 ---
 

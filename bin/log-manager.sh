@@ -106,6 +106,11 @@ if [[ ! -f "${TARGET_LOG}" ]]; then
     exit 1
 fi
 
+if [[ ! -r "${TARGET_LOG}" ]]; then
+    log_error "Permission denied: Cannot read '${TARGET_LOG}'. Run with 'sudo' or check file permissions."
+    exit 1
+fi
+
 if ! [[ "${MAX_SIZE_MB}" =~ ^[0-9]+$ ]]; then
     log_error "Max size (-s) must be a positive integer. Got: '${MAX_SIZE_MB}'"
     exit 1
